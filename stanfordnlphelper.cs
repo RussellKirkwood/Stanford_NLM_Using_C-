@@ -31,15 +31,14 @@ namespace Helpers
             var textresultsStanfordNLP = new List<NLPTextResults>();
 
             var sent = new Sentence("Test");
-            var nerTags = sent.nerTags().toArray();  // [PERSON, O, O, O, O, O, O, O]
-            String firstPOSTag = sent.posTag(0);   // NNP
+            var nerTags = sent.nerTags().toArray();  
+            String firstPOSTag = sent.posTag(0);   
 
             foreach (var item in nerTags)
             {
                 var ItemTag = item;
             }
-
-            //    // Now use Stanford NLP 
+            
             try
             {
                 var doc = new edu.stanford.nlp.simple.Document(words);
@@ -55,8 +54,7 @@ namespace Helpers
             {                
                 response += e.Message;
             }
-
-            //    // Combine both Lists
+            
             var resultsList = textresultsRecognizer.Concat(textresultsStanfordNLP);
             var SortedList = resultsList.OrderBy(o => o.position).ToList();           
 
